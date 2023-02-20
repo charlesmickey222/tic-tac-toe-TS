@@ -65,7 +65,10 @@ function renderBoard():void{
 function renderMessage():void{
   if(tie){statusMssg.innerText = tieMssg}
   else if(winner.status === true && winner.winner !== ''){
-  {statusMssg.innerText = winner.winner + ' ' + winMssg}
+  {
+    statusMssg.innerText = winner.winner + ' ' + winMssg
+    winner.status = false
+  }
 
   }
 }
@@ -79,7 +82,8 @@ function handleClick(evt:HTMLDivElement):void{
 }
 
 function placePiece(evt:HTMLDivElement):void{
-    if(evt.innerHTML !== '' && turn !== 0){
+    if (turn === 0) return
+    if(evt.innerHTML !== ''){
       statusMssg.innerHTML = 'try again'
       return
     }

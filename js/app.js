@@ -58,6 +58,7 @@ function renderMessage() {
     else if (winner.status === true && winner.winner !== '') {
         {
             statusMssg.innerText = winner.winner + ' ' + winMssg;
+            winner.status = false;
         }
     }
 }
@@ -69,7 +70,9 @@ function handleClick(evt) {
     render();
 }
 function placePiece(evt) {
-    if (evt.innerHTML !== '' && turn !== 0) {
+    if (turn === 0)
+        return;
+    if (evt.innerHTML !== '') {
         statusMssg.innerHTML = 'try again';
         return;
     }
